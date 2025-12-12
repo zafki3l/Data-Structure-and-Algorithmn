@@ -1,7 +1,9 @@
 <?php
 
+$start = microtime(true);
+
 $array = [];
-$array = randomArrayGenerator($array, 10);
+$array = randomArrayGenerator($array, 12);
 
 function randomArrayGenerator(array $array, int $number) {
     for ($i = 0; $i < $number; $i++) {
@@ -25,11 +27,17 @@ function isSorted(array $array): bool
 
 function bogoSort(array $array)
 {
+    $attemps = 0;
     while (!isSorted($array)) {
+        $attemps++;
         shuffle($array);
+        echo "{$attemps}\n";
     }
 
     return $array;
 }
 
 print_r(bogoSort($array));
+
+$end = microtime(true);
+echo "Time: " . ($end - $start) . "s\n";

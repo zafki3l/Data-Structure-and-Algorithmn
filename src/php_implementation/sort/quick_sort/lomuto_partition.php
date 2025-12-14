@@ -1,7 +1,5 @@
 <?php
 
-$start = microtime(true);
-
 $array = [];
 $array = randomArrayGenerator($array, 100_000);
 
@@ -47,8 +45,10 @@ function lomutoPartition(array &$array, int $left, int $right): int
     return $i;
 }
 
+$start = microtime(true);
+
 quickSort($array, 0, count($array) - 1);
-print_r($array);
+echo "SORT\n";
 
 $end = microtime(true);
 echo "Time: " . ($end - $start) . "s\n";

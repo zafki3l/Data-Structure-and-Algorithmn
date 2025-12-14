@@ -1,5 +1,6 @@
 #include <iostream>
 #include <chrono>
+#include <random>
 
 using namespace std;
 using namespace std::chrono;
@@ -11,18 +12,18 @@ int main() {
     int array[100000];
     int n;
     cin >> n;
-    srand(time(NULL));
+    
+    mt19937 rng(time(NULL)); // Mersenne Twister
+    uniform_int_distribution<int> dist(-1000000, 1000000);
 
     for (int i = 0; i < n; i++) {
-        array[i] = rand() % 100000000;
+        array[i] = dist(rng);
     }
 
     auto start = high_resolution_clock::now();
 
     quickSort(array, 0, n - 1);
-    for (int i = 0; i < n; i++) {
-        cout << array[i] << "\n";
-    }
+    cout << "SORTED";
 
     auto end = high_resolution_clock::now();
     auto duration = duration_cast<milliseconds>(end - start);

@@ -3,7 +3,7 @@
 $start = microtime(true);
 
 $array = [];
-$array = randomArrayGenerator($array, 100_000);
+$array = randomArrayGenerator($array, 1_000_000);
 
 function randomArrayGenerator(array $array, int $number) {
     for ($i = 0; $i < $number; $i++) {

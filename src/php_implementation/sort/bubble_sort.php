@@ -13,7 +13,7 @@ function randomArrayGenerator(array $array, int $number) {
     return $array;
 }
 
-function bubbleSort(array $array): array
+function bubbleSort(array &$array): void
 {
     $length = count($array);
 
@@ -26,12 +26,10 @@ function bubbleSort(array $array): array
             }
         }
     }
-
-    return $array;
 }
 
+bubbleSort($array);
 print_r($array);
-print_r(bubbleSort($array));
 
 $end = microtime(true);
 echo "Time: " . ($end - $start) . "s\n";

@@ -3,7 +3,7 @@
 $start = microtime(true);
 
 $array = [];
-$array = randomArrayGenerator($array, 1_000_000);
+$array = randomArrayGenerator($array, 100_000);
 
 function randomArrayGenerator(array $array, int $number) {
     for ($i = 0; $i < $number; $i++) {
@@ -32,7 +32,7 @@ function quickSort(array $array): array
         }
     }
 
-    return array_merge(quickSort($less_than_pivot), [$pivot], quickSort($greater_than_pivot));
+    return [...quickSort($less_than_pivot), ...[$pivot], ...quickSort($greater_than_pivot)];
 }
 
 print_r(quickSort($array));
